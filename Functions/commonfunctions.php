@@ -370,19 +370,59 @@ function cart(){
 
 
         $num_of_rows=mysqli_num_rows($result_query);
-       // echo "<script>alert($num_of_rows)</script>";
+       echo "<script>alert($num_of_rows)</script>";
 
 if($num_of_rows>0){
             echo "<script>alert('This product is already present in the cart')</script>";
-            echo "<script>window.open('index.php','_self'.)</script>";
+            /*$insert_query="INSERT INTO `cart_details`(`product_id`, `ip_address`, `quantity`) VALUES ($get_product_id,'$ip',0)";
+            $result_query=mysqli_query($con,$insert_query);*/
+            echo "<script>alert('This product is added again in the cart')</script>";
+           // echo "<script>window.open('index.php','_self'.)</script>";
         }else{
-            $insert_query=" INSERT INTO `cart_details`(product_id,ip_address,quantity) VALUES ('$get_product_id','$ip',0)";
-            $result_query=mysqli_query($con, $insert_query);
+            /*$insert_query=" INSERT INTO `cart_details`(product_id,ip_address,quantity) VALUES ($get_product_id,'$ip',0)";
+            $result_query=mysqli_query($con,$insert_query);*/
             echo "<script>alert('This product is added to cart')</script>. ";
-        echo "<script>window.open('index.php','_self'.)</script>";
+        
         }
+        $insert_query=" INSERT INTO `cart_details`(product_id,ip_address,quantity) VALUES ($get_product_id,'$ip',0)";
+            $result_query=mysqli_query($con,$insert_query);
+            echo "<script>window.open('index.php','_self'.)</script>";
     }
 }
+
+
+// function for countingnumbersof items in cart
+function cart_item_num(){
+    
+
+    if(isset($_GET['add_to_cart'])){
+        global $con;
+        $ip=getIPAddress();
+       
+       
+        $select_query="SELECT * FROM `cart_details` WHERE ip_address='$ip'";
+
+        $result_query=mysqli_query($con,$select_query);
+
+
+        $num_of_items=mysqli_num_rows($result_query);
+     
+    }
+
+else{ 
+    global $con;
+    $ip=getIPAddress();
+   
+   
+    $select_query="SELECT * FROM `cart_details` WHERE ip_address='$ip'";
+
+    $result_query=mysqli_query($con,$select_query);
+
+
+    $num_of_items=mysqli_num_rows($result_query);
+        }
+echo $num_of_items;
+    }    
 
 ?>
 
