@@ -34,6 +34,7 @@ echo " <div class='col-md-4 '>
     <div class='card-body'>
       <h5 class='card-title'> $product_title</h5>
        <p class='card-text'> $product_description</p>
+       <p class='card-text'>  $product_price/-</p>
         <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add cart</a>
        <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View cart</a>
     </div>
@@ -77,6 +78,7 @@ function AllProducts(){
         <div class='card-body'>
           <h5 class='card-title'> $product_title</h5>
            <p class='card-text'> $product_description</p>
+           <p class='card-text'> Price: $product_price/-</p>
            <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add cart</a>
             <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View cart</a>
         </div>
@@ -128,6 +130,7 @@ function getUniqueCategory(){
         <div class='card-body'>
           <h5 class='card-title'> $product_title</h5>
            <p class='card-text'> $product_description</p>
+           <p class='card-text'> Price: $product_price/-</p>
            <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add cart</a>
             <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View cart</a>
         </div>
@@ -178,6 +181,7 @@ function getUniqueBrands(){
         <div class='card-body'>
           <h5 class='card-title'> $product_title</h5>
            <p class='card-text'> $product_description</p>
+           <p class='card-text'> Price: $product_price/-</p>
            <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add cart</a>
             <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View cart</a>
         </div>
@@ -262,6 +266,7 @@ if(isset($_GET['search_data_product'])){
         <div class='card-body'>
           <h5 class='card-title'> $product_title</h5>
            <p class='card-text'> $product_description</p>
+           <p class='card-text'> Price: $product_price/-</p>
            <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add cart</a>
             <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View cart</a>
         </div>
@@ -309,6 +314,7 @@ echo " <div class='col-md-4 '>
     <div class='card-body'>
       <h5 class='card-title'> $product_title</h5>
        <p class='card-text'> $product_description</p>
+       <p class='card-text'> Price: $product_price/-</p>
        <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add cart</a>
        <a href='index.php' class='btn btn-secondary'>Go Home</a>
     </div>
@@ -424,6 +430,32 @@ else{
 echo $num_of_items;
     }    
 
+
+    // giving the total price of cart
+    function totalPrice(){
+        global $con;
+        $ip=getIPAddress();
+        $total_price=0;
+        $select_query="SELECT * FROM `cart_details` WHERE ip_address='$ip'";
+        $result_query=mysqli_query($con,$select_query);
+
+        while($row=mysqli_fetch_array( $result_query)){
+            $user_product_id=$row['product_id'];
+        $select_user_product="SELECT * FROM `products` WHERE Product_id=$user_product_id";
+        $result_user_query=mysqli_query($con,$select_user_product);
+        while($row1=mysqli_fetch_array($result_user_query)){
+
+         $product_price=array($row1['Product_price']);
+         
+         $product_values=array_sum($product_price);
+         
+         $total_price+=$product_values;
+        
+        }
+       
+        }
+        echo $total_price;
+    }
 ?>
 
 
