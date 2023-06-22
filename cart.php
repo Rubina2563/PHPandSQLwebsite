@@ -94,27 +94,30 @@ cart();
     <div class="row">
         <form action="" method="POST">
         <table class="table table-bordered text-center">
-            <thead>
-                <tr>
-                    <th>Product Title</th>
-                    <th>Product Image</th>
-                    <th>Quantity</th>
-                    <th>Total Price</th>
-                    <th>Remove</th>
-                    <th colspan="2">Operations</th>
-                </tr>
-            </thead>
-            <tbody>
+           
           
 <?php
          global $con;
          $ip=getIPAddress();
          $total_price=0;
          $select_query="SELECT * FROM `cart_details` WHERE ip_address='$ip'";
-         $result_query=mysqli_query($con,$select_query);
          
- 
-         while($row=mysqli_fetch_array($result_query)){
+         $result_query1=mysqli_query($con,$select_query);
+         $result_Num_row=mysqli_num_rows($result_query1);
+
+ if($result_Num_row){
+  echo " <thead>
+  <tr>
+      <th>Product Title</th>
+      <th>Product Image</th>
+      <th>Quantity</th>
+      <th>Total Price</th>
+      <th>Remove</th>
+      <th colspan='2'>Operations</th>
+  </tr>
+</thead>
+<tbody>";
+         while($row=mysqli_fetch_array($result_query1)){
              $user_product_id=$row['product_id'];
          $select_user_product="SELECT * FROM `products` WHERE Product_id=$user_product_id";
          $result_user_query=mysqli_query($con,$select_user_product);
@@ -146,17 +149,21 @@ cart();
                   }
                   ?>
                     <td><?php echo $price ?>/-Quantity  </td>
-                    <td><input type="checkbox" name="" ></td>
+                    <td><input type="checkbox" name="items[]" value="<?php echo $user_product_id ;?>"></td>
                     <td>
                      <!--  <button class="bg-primary rounded p-3 mx-3">Update</button>-->
                         <input type="submit" value="Update Cart" name="update_cart" class="bg-primary rounded p-3 mx-3" >
-                        <button class="bg-primary rounded p-3 mx-3">Remove</button>
+                        <input type="submit" value="Remove" name="remove_cart" class="bg-primary rounded p-3 mx-3" >
                       
                     </td>
                 </tr>
-
+                
+        
                 <?php 
-              }}
+          } }}
+         else{
+          echo "<h1 class='text-center text-danger'>Cart is empty.</h1>";
+         }
             ?>
                
  
@@ -170,12 +177,51 @@ cart();
    
 <!--subtotal -->
 <div class="d-flex">
-    <h4 class="p-3">Subtotal:<strong class="text-primary"><?php echo $total_price?></strong></h4>
-    <a href="index.php"><button type="submit" class="bg-primary rounded p-3 mx-3">Continue shopping</button></a>
-    <a href=""><button type="submit" class="bg-secondary rounded p-3">Checkout</button></a>
+  <?php
+  global $con;
+  $ip=getIPAddress();
+ 
+  $select_query="SELECT * FROM `cart_details` WHERE ip_address='$ip'";
+  
+  $result_query1=mysqli_query($con,$select_query);
+  $result_Num_row1=mysqli_num_rows($result_query1);
+
+if($result_Num_row1>0){
+  echo " <h4 class='p-3'>Subtotal:<strong class='text-primary'>$total_price</strong></h4>
+  <button type='submit' class='bg-primary text-light rounded p-3 m-3'><a class ='text-light text-decoration-none' href='index.php'>Continue Shopping</a></button>
+  
+  <button type='submit' class='bg-secondary text-light rounded p-3 m-3'><a class ='text-light text-decoration-none' href='checkout.php'>Checkout</a></button>";
+}else{
+  echo "<input type='submit' value='Continue Shopping' name='Continue_Shopping' class='bg-primary text-light rounded p-3 m-3'>";
+}
+
+if(isset($_POST['Continue_Shopping'])){
+  echo "<script>window.open('index.php','_self')</script>";
+}
+  ?>
+    
         </div>
 </div>
 </form>
+<!--function to delete item-->
+<?php
+function removeItem(){
+  global $con;
+  if(isset($_POST['remove_cart'])){
+    foreach($_POST['items'] as $removeId){
+      echo $removeId;
+      $delete_query="DELETE FROM `cart_details` WHERE product_id =$removeId";
+      $run_delete=mysqli_query($con,$delete_query);
+      if($run_delete){
+        echo "<script>window.open('cart.php','_self')</script>";
+      }
+    }
+  }
+}
+
+echo $remove_item=removeItem();
+?>
+
 
 <!--last child-->
 
