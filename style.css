@@ -15,7 +15,7 @@
     object-fit: contain;
    }
 
-   .imageAdmin{
-    width: 10px;
-
-   }
+  .cart_image{
+    width: 80px;
+    height: 80px;
+  }
