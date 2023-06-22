@@ -376,23 +376,21 @@ function cart(){
 
 
         $num_of_rows=mysqli_num_rows($result_query);
-       echo "<script>alert($num_of_rows)</script>";
+       
 
 if($num_of_rows>0){
             echo "<script>alert('This product is already present in the cart')</script>";
-            /*$insert_query="INSERT INTO `cart_details`(`product_id`, `ip_address`, `quantity`) VALUES ($get_product_id,'$ip',0)";
-            $result_query=mysqli_query($con,$insert_query);*/
+            $insert_query=" INSERT INTO `cart_details`(product_id,ip_address,quantity) VALUES ($get_product_id,'$ip',0)";
+            $result_query=mysqli_query($con,$insert_query);
             echo "<script>alert('This product is added again in the cart')</script>";
-           // echo "<script>window.open('index.php','_self'.)</script>";
+            echo "<script>window.open('index.php','_self'.)</script>";
         }else{
-            /*$insert_query=" INSERT INTO `cart_details`(product_id,ip_address,quantity) VALUES ($get_product_id,'$ip',0)";
-            $result_query=mysqli_query($con,$insert_query);*/
+            $insert_query=" INSERT INTO `cart_details`(product_id,ip_address,quantity) VALUES ($get_product_id,'$ip',0)";
+            $result_query=mysqli_query($con,$insert_query);
             echo "<script>alert('This product is added to cart')</script>. ";
         
         }
-        $insert_query=" INSERT INTO `cart_details`(product_id,ip_address,quantity) VALUES ($get_product_id,'$ip',0)";
-            $result_query=mysqli_query($con,$insert_query);
-            echo "<script>window.open('index.php','_self'.)</script>";
+       
     }
 }
 
