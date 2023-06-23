@@ -77,7 +77,7 @@ cart();
 
         <li class="nav-item">
         <!--this "Login " will change to "llog out" when some login"-->
-          <a class="nav-link" href="#">Login</a>
+          <a class="nav-link" href="./user_area/userlogin.php">Login</a>
         </li>
 
     </ul>
@@ -190,9 +190,9 @@ if($result_Num_row1>0){
   echo " <h4 class='p-3'>Subtotal:<strong class='text-primary'>$total_price</strong></h4>
   <button type='submit' class='bg-primary text-light rounded p-3 m-3'><a class ='text-light text-decoration-none' href='index.php'>Continue Shopping</a></button>
   
-  <button type='submit' class='bg-secondary text-light rounded p-3 m-3'><a class ='text-light text-decoration-none' href='checkout.php'>Checkout</a></button>";
+  <button type='submit' class='bg-secondary text-light rounded p-3 m-3'><a class ='text-light text-decoration-none' href='./user_area/checkout.php'>Checkout</a></button>";
 }else{
-  echo "<input type='submit' value='Continue Shopping' name='Continue_Shopping' class='bg-primary text-light rounded p-3 m-3'>";
+  echo " <button type='submit' class='bg-primary text-light rounded p-3 m-3'><a class ='text-light text-decoration-none' href='index.php'>Continue Shopping</a></button>";
 }
 
 if(isset($_POST['Continue_Shopping'])){

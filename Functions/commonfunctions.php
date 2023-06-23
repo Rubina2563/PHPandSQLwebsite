@@ -1,6 +1,4 @@
 <?php
-
-
 //including connecting file
 include('./Admin_Panel/Includes/connect.php');
 
