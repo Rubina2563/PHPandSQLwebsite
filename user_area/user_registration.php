@@ -105,6 +105,7 @@ function getIPAddress() {
         $user_username=$_POST['user_username'];
         $user_mail=$_POST['user_mail'];
         $user_password=$_POST['user_password'];
+        $hashed_password=password_hash($user_password,PASSWORD_DEFAULT);
         $user_conf_password=$_POST['user_conf_password'];
         $user_address=$_POST['user_address'];
         $user_contact=$_POST['user_contact'];
@@ -125,7 +126,7 @@ function getIPAddress() {
             echo "<script>alert('Password doesnot match with confirm password')</script>";
         }
         else{
-        $insert_query="INSERT INTO `user_table`(`username`, `user_email`, `user_passord`, `user_image`, `user_ip`, `user_address`, `user_mobile`) VALUES ('$user_username','$user_mail','$user_password','$user_image','$user_ip','$user_address','$user_contact')";
+        $insert_query="INSERT INTO `user_table`(`username`, `user_email`, `user_passord`, `user_image`, `user_ip`, `user_address`, `user_mobile`) VALUES ('$user_username','$user_mail','$hashed_password','$user_image','$user_ip','$user_address','$user_contact')";
         $sql_execute=mysqli_query($con,$insert_query);
         if($sql_execute){
             echo "<script>alert('Data inserted successfully')</script>";
@@ -134,6 +135,17 @@ function getIPAddress() {
         }}
 
         
+        $select_cart_items="SELECT * FROM `cart_details` WHERE ip_address='$user_ip' ";
+        $cart_item_query=mysqli_query($con,$select_cart_items);
+        $items_num=mysqli_num_rows($cart_item_query);
+
+        if($items_num>0){
+            $_SESSION['username']=$user_username;
+            echo "<script>alert('You have items in cart')</script>"; 
+            echo "<script>window.open('checkout.php','-self')</script>";
+        }else{
+            echo "<script>window.open('..index.php','-self')</script>";
+        }
     }
 
 

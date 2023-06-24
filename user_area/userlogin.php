@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!---style.css-->
     <link rel="stylesheet" href="style.css">
+    <?php
+include('../Admin_Panel/Includes/connect.php');
+include('../Functions/commonfunctions.php');
+?>
 </head>
 <body>
     <div class="container my-3">
@@ -45,3 +49,40 @@
     </div>
 </body>
 </html>
+
+<?php
+if(isset($_POST['user_login'])){
+$user_username=$_POST['user_username'];
+$user_password=$_POST['user_password'];
+
+$select_query="SELECT * FROM `user_table` WHERE username='$user_username' ";
+$result=mysqli_query($con,$select_query);
+$row_count=mysqli_num_rows($result);
+$row_data=mysqli_fetch_assoc($result);
+$user_ip=getIPAddress();
+
+//cart items
+$select_query1="SELECT * FROM `cart_details` WHERE ip_address='$user_ip'";
+$result1=mysqli_query($con,$select_query1);
+$row_count1=mysqli_num_rows($result1);
+
+if($row_count>0){
+if(password_verify($user_password,$row_data['user_passord'])){
+   // echo "<script>alert('login successfully')</script>";  
+   if($row_count==1 and $row_count1==0){
+    echo "<script>alert('login successfully')</script>";  
+    echo "<script>window.open('profile.php','_self')</script>";  
+   }else{
+    echo "<script>alert('login successfully')</script>";  
+    echo "<script>window.open('payment.php','_self')</script>";  
+   }
+   
+}else{
+    echo "<script>alert('Invalid credentials')</script>";   
+}
+}else{
+    echo "<script>alert('Invalid creddentials')</script>"; 
+}
+
+}
+?>

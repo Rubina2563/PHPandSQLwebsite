@@ -1,6 +1,6 @@
 <?php
 //including connecting file
-include('./Admin_Panel/Includes/connect.php');
+//include('./Admin_Panel/Includes/connect.php');
 
 //getting products data when neither the product nor brand is clicked 
 function getProducts(){

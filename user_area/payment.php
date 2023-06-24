@@ -6,6 +6,6 @@
     <title>Payment Page</title>
 </head>
 <body>
-    <h1>Payemnts</h1>
+    <h1>Payements</h1>
 </body>
 </html>
