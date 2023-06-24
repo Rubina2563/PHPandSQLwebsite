@@ -67,12 +67,15 @@ $result1=mysqli_query($con,$select_query1);
 $row_count1=mysqli_num_rows($result1);
 
 if($row_count>0){
+    $_SESSION['username']=$user_username;
 if(password_verify($user_password,$row_data['user_passord'])){
    // echo "<script>alert('login successfully')</script>";  
    if($row_count==1 and $row_count1==0){
+    $_SESSION['username']=$user_username;
     echo "<script>alert('login successfully')</script>";  
     echo "<script>window.open('profile.php','_self')</script>";  
    }else{
+    $_SESSION['username']=$user_username;
     echo "<script>alert('login successfully')</script>";  
     echo "<script>window.open('payment.php','_self')</script>";  
    }
