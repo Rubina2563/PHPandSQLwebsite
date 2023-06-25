@@ -13,6 +13,7 @@
     <?php
 include('../Admin_Panel/Includes/connect.php');
 include('../Functions/commonfunctions.php');
+@session_start();
 ?>
 </head>
 <body>

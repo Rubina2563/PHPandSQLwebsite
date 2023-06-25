@@ -1,6 +1,7 @@
 
 <?php
 include('../Admin_Panel/Includes/connect.php');
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,10 +62,19 @@ include('../Admin_Panel/Includes/connect.php');
           <a class="nav-link" href="#"><b>Welcome guests</b></a>
         </li>
 
-        <li class="nav-item">
-        <!--this "Login " will change to "llog out" when some login"-->
-          <a class="nav-link" href="#">Login</a>
-        </li>
+        
+        <?php
+       if(!isset($_SESSION['username'])){
+       echo " <li class='nav-item '>
+          <a class='nav-link' href='.\userlogin.php'><b>Login</b></a>
+        </li>";
+       }else{
+        echo " <li class='nav-item '>
+        <a class='nav-link' href='.\logout.php'><b>Log out</b></a>
+      </li>";
+       }
+       ?>
+        
 
     </ul>
 </nav>

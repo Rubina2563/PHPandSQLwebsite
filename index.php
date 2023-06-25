@@ -1,6 +1,7 @@
 <?php 
 include('Admin_Panel\Includes\connect.php');
 include('Functions\commonfunctions.php');
+session_start();
 ?>
 
 
@@ -72,15 +73,30 @@ cart();
 <nav class="navbar navbar-expand-lg  bg-primary mt-1" >
     <ul class="navbar-nav me-auto">
 
-    <li class="nav-item ">
-        <!--this "welcome guest " will change to "welcome name" when some login"-->
-          <a class="nav-link" href="#"><b>Welcome guests</b></a>
-        </li>
 
-        <li class="nav-item">
-        <!--this "Login " will change to "llog out" when some login"-->
-          <a class="nav-link" href="./user_area/userlogin.php">Login</a>
-        </li>
+
+        <?php
+
+if(!isset($_SESSION['username'])){
+  echo " <li class='nav-item '>
+  <a class='nav-link' href='#'><b>Welcome guests</b></a>
+   </li>";
+  }else{
+   echo "<li class='nav-item '>
+   <a class='nav-link' href='#'><b>Welcome ".$_SESSION['username']."</b></a>
+ </li>";
+  }
+
+       if(!isset($_SESSION['username'])){
+       echo " <li class='nav-item '>
+          <a class='nav-link' href='.\user_area\userlogin.php'><b>Login</b></a>
+        </li>";
+       }else{
+        echo " <li class='nav-item '>
+        <a class='nav-link' href='.\user_area\logout.php'><b>Log out</b></a>
+      </li>";
+       }
+       ?>
 
     </ul>
 </nav>

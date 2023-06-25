@@ -63,7 +63,7 @@
         <p class="text-center">Admin panel</p></div>
 
         <div class="button text-center">
-            <button class="m-2 rounded"><a href="http://localhost/E-commerceWebsite/inert_product.php" class="nav-link text-light bg-success p-3">Insert Products</a></button>
+            <button class="m-2 rounded"><a href="..\inert_product.php" class="nav-link text-light bg-success p-3">Insert Products</a></button>
             <button class="m-2 rounded"><a href="" class="nav-link text-light bg-success p-3">View</a></button>
             <button class="m-2 rounded"><a href="index.php?insert_category" class="nav-link text-light bg-success p-3">Insert Categories</a></button>
             <button class="m-2 rounded"><a href="" class="nav-link text-light bg-success p-3">view Categories</a></button>

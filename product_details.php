@@ -39,7 +39,7 @@ include('Functions\commonfunctions.php');
           <a class="nav-link" href="display_all.php">Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Register</a>
+          <a class="nav-link" href=".\user_area\user_registration.php">Register</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
@@ -72,15 +72,28 @@ cart();
 <nav class="navbar navbar-expand-lg  bg-primary mt-1" >
     <ul class="navbar-nav me-auto">
 
-    <li class="nav-item ">
-        <!--this "welcome guest " will change to "welcome name" when some login"-->
-          <a class="nav-link" href="#"><b>Welcome guests</b></a>
-        </li>
+    <?php
 
-        <li class="nav-item">
-        <!--this "Login " will change to "llog out" when some login"-->
-          <a class="nav-link" href="#">Login</a>
-        </li>
+if(!isset($_SESSION['username'])){
+  echo " <li class='nav-item '>
+  <a class='nav-link' href='#'><b>Welcome guests</b></a>
+   </li>";
+  }else{
+   echo "<li class='nav-item '>
+   <a class='nav-link' href='#'><b>Welcome ".$_SESSION['username']."</b></a>
+ </li>";
+  }
+
+       if(!isset($_SESSION['username'])){
+       echo " <li class='nav-item '>
+          <a class='nav-link' href='.\user_area\userlogin.php'><b>Login</b></a>
+        </li>";
+       }else{
+        echo " <li class='nav-item '>
+        <a class='nav-link' href='.\user_area\logout.php'><b>Log out</b></a>
+      </li>";
+       }
+       ?>
 
     </ul>
 </nav>
