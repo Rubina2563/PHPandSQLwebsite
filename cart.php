@@ -98,7 +98,7 @@ if(!isset($_SESSION['username'])){
 <!--third child-->
 <div class="bg-light">
     <h1 class="text-center">Its my store.</h1>
-    <p class="text-center">Have your all item from from all favotite brands at one plce.</p>
+    <p class="text-center">Have your all item from from all favotite brands at one place.</p>
 </div>
 
 
@@ -118,7 +118,7 @@ if(!isset($_SESSION['username'])){
          $result_query1=mysqli_query($con,$select_query);
          $result_Num_row=mysqli_num_rows($result_query1);
 
- if($result_Num_row){
+ if($result_Num_row>0){
   echo " <thead>
   <tr>
       <th>Product Title</th>
@@ -152,7 +152,8 @@ if(!isset($_SESSION['username'])){
                     <td><?php echo $product_title ?></td>
                     <td><img class="cart_image" src="./Images/<?php echo $product_image1?>" alt=""></td>
                    <td><form action="" method="POST"><input type="number" id="quantity" name="quantity" min="1" max="100" step="1" class="form-input w-50"></form></td>
-                  <?php
+                 
+                 <?php
                   $get_ip=getIPAddress();
                   if(isset($_POST['update_cart'])){
                     $Quantity=$_POST['quantity'];
@@ -161,7 +162,7 @@ if(!isset($_SESSION['username'])){
                     $total_price= $total_price*(int)$Quantity;
                   }
                   ?>
-                    <td><?php echo $price ?>/-Quantity  </td>
+                    <td><?php echo $price ?>/- </td>
                     <td><input type="checkbox" name="items[]" value="<?php echo $user_product_id ;?>"></td>
                     <td>
                      <!--  <button class="bg-primary rounded p-3 mx-3">Update</button>-->
