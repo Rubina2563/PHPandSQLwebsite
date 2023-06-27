@@ -457,11 +457,14 @@ echo $num_of_items;
     function get_user_orders_details(){
         global $con;
         $username=$_SESSION['username'];
-        $get_details="SELECT * FROM `user_table` WHERE username='$username' ";
+        
+        $get_details="SELECT * FROM `user_table` WHERE username='$username'";
         $result_query=mysqli_query($con,$get_details);
+        
 
         while($row=mysqli_fetch_array($result_query)){
             $user_id=$row['user_id'];
+            
             if(!isset($_GET['edit_account'])){
                 if(!isset($_GET['my_orders'])){
                     if(!isset($_GET['delete_account'])){
@@ -469,9 +472,13 @@ echo $num_of_items;
                         $result_order_query=mysqli_query($con,$get_orders);
                         $num_of_rows=mysqli_num_rows($result_order_query);
                         if($num_of_rows>0){
-                            echo $num_of_rows;
+                            echo "<h3 class='text-center text-danger mt-5 mb-2'>You have $num_of_rows orders pending. </h3>
+                            <p class='text-center'><a href='profile.php?my_orders' class='text-dark'>Order details</a></p>";
+                        }else{
+                            echo "<h3 class='text-center text-danger mt-5 mb-2'>You have zero orders pending. </h3>
+                            <p class='text-center'><a href='../index.php' class='text-dark'>Explore products</a></p>";  
                         }
-                        
+
                     }  
                 }   
             }

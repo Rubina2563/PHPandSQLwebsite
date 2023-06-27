@@ -22,6 +22,7 @@ session_start();
         body{
             overflow-x:hidden;
         }
+
      
     </style>
 
@@ -44,7 +45,7 @@ cart();
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+          <a class="nav-link active" aria-current="page" href="..\index.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="..\display_all.php">Products</a>
@@ -97,11 +98,11 @@ if(!isset($_SESSION['username'])){
 
        if(!isset($_SESSION['username'])){
        echo " <li class='nav-item '>
-          <a class='nav-link' href='.\user_area\userlogin.php'><b>Login</b></a>
+          <a class='nav-link' href='.\userlogin.php'><b>Login</b></a>
         </li>";
        }else{
         echo " <li class='nav-item '>
-        <a class='nav-link' href='.\user_area\logout.php'><b>Log out</b></a>
+        <a class='nav-link' href='.\logout.php'><b>Log out</b></a>
       </li>";
        }
        ?>
@@ -154,12 +155,17 @@ if(!isset($_SESSION['username'])){
         </li>  
 
         <li class="nav-item ">
-          <a class="nav-link text-light" href="logout.php">Logout</a>
+          <a class="nav-link text-light" href=".\logout.php">Logout</a>
         </li>  
         </ul>
     </div>
-    <div class="col-md-10">
-        <?php get_user_orders_details();?>
+    <div class="col-md-10 text-center">
+        <?php get_user_orders_details();
+        
+        if(isset($_GET['edit_account'])){
+            include('edit_account.php');
+        }
+        ?>
     </div>
 </div>
 

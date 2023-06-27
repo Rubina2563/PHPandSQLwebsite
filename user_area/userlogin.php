@@ -56,10 +56,12 @@ if(isset($_POST['user_login'])){
 $user_username=$_POST['user_username'];
 $user_password=$_POST['user_password'];
 
+
 $select_query="SELECT * FROM `user_table` WHERE username='$user_username' ";
 $result=mysqli_query($con,$select_query);
 $row_count=mysqli_num_rows($result);
 $row_data=mysqli_fetch_assoc($result);
+
 $user_ip=getIPAddress();
 
 //cart items
@@ -69,8 +71,10 @@ $row_count1=mysqli_num_rows($result1);
 
 if($row_count>0){
     $_SESSION['username']=$user_username;
+    //$_SESSION['user_password']=$user_password;
 if(password_verify($user_password,$row_data['user_passord'])){
-   // echo "<script>alert('login successfully')</script>";  
+  //echo "<script>alert('login successfully')</script>"; 
+
    if($row_count==1 and $row_count1==0){
     $_SESSION['username']=$user_username;
     echo "<script>alert('login successfully')</script>";  
