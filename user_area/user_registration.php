@@ -111,6 +111,7 @@ function getIPAddress() {
         $user_contact=$_POST['user_contact'];
         $user_image=$_FILES['user_image']['name'];
         $user_image_tmp=$_FILES['user_image']['tmp_name'];
+        $fileDestination='./user_image/'.$user_image;
         $user_ip=getIPAddress();
 
         //select query
@@ -118,7 +119,7 @@ function getIPAddress() {
         $selected_query=mysqli_query($con,$select_user);
         $user_num=mysqli_num_rows($selected_query);
 
-        move_uploaded_file($user_image_tmp,'./user_image/$user_image');
+        move_uploaded_file($user_image_tmp,$fileDestination);
 
         if( $user_num>0){
             echo "<script>alert('Username and email already exist')</script>";
