@@ -42,9 +42,19 @@ cart();
         <li class="nav-item">
           <a class="nav-link" href="display_all.php">Products</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./user_area/user_registration.php">Register</a>
-        </li>
+
+        <?php
+        if(isset($_SESSION['username'])){
+echo "<li class='nav-item'>
+<a class='nav-link' href='./user_area/profile.php'>My Account</a>
+</li>";
+        }else{
+          echo "<li class='nav-item'>
+          <a class='nav-link' href='./user_area/user_registration.php'>Register</a>
+          </li>";
+        }
+        ?>
+        
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
         </li>
@@ -104,7 +114,7 @@ if(!isset($_SESSION['username'])){
 <!--third child-->
 <div class="bg-light">
     <h1 class="text-center">Its my store.</h1>
-    <p class="text-center">Have your all item from from all favotite brands at one plce.</p>
+    <p class="text-center">Have your all item from from all favourite brands at one place.</p>
 </div>
 
 
