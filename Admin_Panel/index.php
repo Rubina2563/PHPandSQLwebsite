@@ -1,6 +1,7 @@
 <?php 
 include('./Includes/connect.php');
 include('../Functions/commonfunctions.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -23,16 +24,17 @@ include('../Functions/commonfunctions.php');
     padding:4px;
     object-fit: contain;
    }
+
+   .product_image{
+    width:10%;
+   }
 .fa-trash {
   color: black;
 }
 .fa-edit {
   color: black;
 }
-   .footer{
-    position:absolute;
-    bottom:0%;
-   }
+   
 
    body {
   overflow-x: hidden;
@@ -109,9 +111,22 @@ include('../Functions/commonfunctions.php');
 
 
 <!--sixth child-->
- <div class="container">
+ 
   <?php  if(isset($_GET['view_products'])){
     include('view_products.php');
+  }
+  ?>
+
+<div class="container">
+  <?php  if(isset($_GET['delete'])){
+    include('delete.php');
+  }
+  ?>
+ </div>
+ 
+ <div class="container">
+  <?php  if(isset($_GET['edit'])){
+    include('edit.php');
   }
   ?>
  </div>
@@ -119,9 +134,12 @@ include('../Functions/commonfunctions.php');
 
 <!---last child--->
 
-<div class='bg-primary p-3 text-center footer'>
+<!--<div class='bg-primary p-3 text-center footer'>
 <p>All @ right are reserved </p>
-</div>
+</div>-->
+<?php
+include("../Functions/footer.php");
+?>
 
   <!----Bootstrap ajs link link---> 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
