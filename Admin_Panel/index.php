@@ -1,3 +1,8 @@
+<?php 
+include('./Includes/connect.php');
+include('../Functions/commonfunctions.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,11 +23,20 @@
     padding:4px;
     object-fit: contain;
    }
-
+.fa-trash {
+  color: black;
+}
+.fa-edit {
+  color: black;
+}
    .footer{
     position:absolute;
     bottom:0%;
    }
+
+   body {
+  overflow-x: hidden;
+}
    </style>
     <title>Document</title>
 
@@ -64,7 +78,7 @@
 
         <div class="button text-center">
             <button class="m-2 rounded"><a href="..\inert_product.php" class="nav-link text-light bg-success p-3">Insert Products</a></button>
-            <button class="m-2 rounded"><a href="" class="nav-link text-light bg-success p-3">View</a></button>
+            <button class="m-2 rounded"><a href="index.php?view_products" class="nav-link text-light bg-success p-3">View Products</a></button>
             <button class="m-2 rounded"><a href="index.php?insert_category" class="nav-link text-light bg-success p-3">Insert Categories</a></button>
             <button class="m-2 rounded"><a href="" class="nav-link text-light bg-success p-3">view Categories</a></button>
             <button class="m-2 rounded"><a href="index.php?insert_brand" class="nav-link text-light bg-success p-3">Insert Brands</a></button>
@@ -94,9 +108,19 @@
  </div>
 
 
- <!---last child--->
- <div class="bg-primary p-3 text-center footer p-3 m-3">
-<p>logout </p>
+<!--sixth child-->
+ <div class="container">
+  <?php  if(isset($_GET['view_products'])){
+    include('view_products.php');
+  }
+  ?>
+ </div>
+ 
+
+<!---last child--->
+
+<div class='bg-primary p-3 text-center footer'>
+<p>All @ right are reserved </p>
 </div>
 
   <!----Bootstrap ajs link link---> 
