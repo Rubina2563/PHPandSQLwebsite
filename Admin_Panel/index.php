@@ -82,8 +82,9 @@ include('../Functions/commonfunctions.php');
             <button class="m-2 rounded"><a href="..\inert_product.php" class="nav-link text-light bg-success p-3">Insert Products</a></button>
             <button class="m-2 rounded"><a href="index.php?view_products" class="nav-link text-light bg-success p-3">View Products</a></button>
             <button class="m-2 rounded"><a href="index.php?insert_category" class="nav-link text-light bg-success p-3">Insert Categories</a></button>
-            <button class="m-2 rounded"><a href="" class="nav-link text-light bg-success p-3">view Categories</a></button>
+            <button class="m-2 rounded"><a href="index.php?view_categories" class="nav-link text-light bg-success p-3">view Categories</a></button>
             <button class="m-2 rounded"><a href="index.php?insert_brand" class="nav-link text-light bg-success p-3">Insert Brands</a></button>
+            <button class="m-2 rounded"><a href="index.php?view_brands" class="nav-link text-light bg-success p-3">View Brands</a></button>
             <button class="m-2 rounded"><a href="" class="nav-link text-light bg-success p-3">Orders</a></button>
             <button class="m-2 rounded"><a href="" class="nav-link text-light bg-success p-3">All Payments</a></button>
             <button class="m-2 rounded"><a href="" class="nav-link text-light bg-success p-3">List User</a></button>
@@ -117,6 +118,7 @@ include('../Functions/commonfunctions.php');
   }
   ?>
 
+<!--seventh child-->
 <div class="container">
   <?php  if(isset($_GET['delete'])){
     include('delete.php');
@@ -124,6 +126,7 @@ include('../Functions/commonfunctions.php');
   ?>
  </div>
  
+ <!--eigth child-->
  <div class="container">
   <?php  if(isset($_GET['edit'])){
     include('edit.php');
@@ -131,7 +134,37 @@ include('../Functions/commonfunctions.php');
   ?>
  </div>
  
+<!--sixth child-->
+<?php  if(isset($_GET['view_categories'])){
+    include('view_category.php');
+  }
+  ?>
 
+
+<?php  if(isset($_GET['view_brands'])){
+    include('view_brand.php');
+  }
+  ?>
+
+<?php  if(isset($_GET['edit_brands'])){
+    include('edit_brand.php');
+  }
+  ?> 
+
+<?php  if(isset($_GET['delete_brands'])){
+    include('delete_brand.php');
+  }
+  ?> 
+
+<?php  if(isset($_GET['edit_categories'])){
+    include('edit_category.php');
+  }
+  ?> 
+
+<?php  if(isset($_GET['delete_categories'])){
+    include('delete_category.php');
+  }
+  ?> 
 <!---last child--->
 
 <!--<div class='bg-primary p-3 text-center footer'>

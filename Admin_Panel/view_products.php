@@ -1,5 +1,6 @@
 
 
+    
     <h1 class="text-center text-success">View Products</h1>
     <table class="table table-bordered-mt-5 table-secondary">
         <thead class="table-info text-center ">
@@ -42,8 +43,8 @@ echo $row_count;
                 ?>
             </td>
             <td><?php echo $Product_status?></td>
-            <td><a href='index.php?delete'><i class='fa fa-trash' aria-hidden='true'></i></a></td>
-            <td><a href='index.php?edit'><i class='fas fa-edit'></i></a></td>
+            <td><a href='index.php?delete=<?php echo $Product_id?>'><i class='fa fa-trash' aria-hidden='true'></i></a></td>
+            <td><a href='index.php?edit=<?php echo $Product_id?>'><i class='fas fa-edit'></i></a></td>
         </tr>
         <?php
             }
