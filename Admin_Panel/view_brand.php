@@ -5,7 +5,7 @@
         <th>S.No</th>
         <th>Brands</th>
         <th>Delete</th>
-        <th>Title</th>
+        <th>Edit</th>
 </tr>
     </thead>
 <tbody>

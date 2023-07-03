@@ -1,7 +1,6 @@
 <?php 
 include('./Includes/connect.php');
 include('../Functions/commonfunctions.php');
-
 ?>
 
 <!DOCTYPE html>

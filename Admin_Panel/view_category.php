@@ -1,3 +1,4 @@
+
 <h1 class="text-center text-success">All Categories</h1>
 <table class="table table-bordered mt-5 table-secondary">
 <thead class="table-info text-center">
@@ -10,6 +11,7 @@
     </thead>
 <tbody>
     <?php
+    
     $select_category="SELECT * FROM `categories`";
     $result_cat=mysqli_query($con,$select_category);
     $number=0;
