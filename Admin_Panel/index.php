@@ -86,7 +86,7 @@ include('../Functions/commonfunctions.php');
             <button class="m-2 rounded"><a href="index.php?view_brands" class="nav-link text-light bg-success p-3">View Brands</a></button>
             <button class="m-2 rounded"><a href="index.php?list_orders" class="nav-link text-light bg-success p-3">All Orders</a></button>
             <button class="m-2 rounded"><a href="index.php?list_payments" class="nav-link text-light bg-success p-3">All Payments</a></button>
-            <button class="m-2 rounded"><a href="" class="nav-link text-light bg-success p-3">List User</a></button>
+            <button class="m-2 rounded"><a href="index.php?list_users" class="nav-link text-light bg-success p-3">List User</a></button>
             <button class="m-2 rounded"><a href="" class="nav-link text-light bg-success p-3 ">Log out</a></button>
             
             
@@ -174,6 +174,11 @@ include('../Functions/commonfunctions.php');
     include('list_payments.php');
   }
   ?> 
+  
+  <?php  if(isset($_GET['list_users'])){
+    include('list_users.php');
+  }
+  ?>
 <!---last child--->
 
 
