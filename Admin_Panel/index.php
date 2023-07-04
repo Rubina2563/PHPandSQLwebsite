@@ -84,8 +84,8 @@ include('../Functions/commonfunctions.php');
             <button class="m-2 rounded"><a href="index.php?view_categories" class="nav-link text-light bg-success p-3">view Categories</a></button>
             <button class="m-2 rounded"><a href="index.php?insert_brand" class="nav-link text-light bg-success p-3">Insert Brands</a></button>
             <button class="m-2 rounded"><a href="index.php?view_brands" class="nav-link text-light bg-success p-3">View Brands</a></button>
-            <button class="m-2 rounded"><a href="" class="nav-link text-light bg-success p-3">Orders</a></button>
-            <button class="m-2 rounded"><a href="" class="nav-link text-light bg-success p-3">All Payments</a></button>
+            <button class="m-2 rounded"><a href="index.php?list_orders" class="nav-link text-light bg-success p-3">All Orders</a></button>
+            <button class="m-2 rounded"><a href="index.php?list_payments" class="nav-link text-light bg-success p-3">All Payments</a></button>
             <button class="m-2 rounded"><a href="" class="nav-link text-light bg-success p-3">List User</a></button>
             <button class="m-2 rounded"><a href="" class="nav-link text-light bg-success p-3 ">Log out</a></button>
             
@@ -164,16 +164,27 @@ include('../Functions/commonfunctions.php');
     include('delete_category.php');
   }
   ?> 
+
+<?php  if(isset($_GET['list_orders'])){
+    include('list_orders.php');
+  }
+  ?> 
+
+<?php  if(isset($_GET['list_payments'])){
+    include('list_payments.php');
+  }
+  ?> 
 <!---last child--->
 
-<!--<div class='bg-primary p-3 text-center footer'>
-<p>All @ right are reserved </p>
-</div>-->
+
 <?php
 include("../Functions/footer.php");
 ?>
 
   <!----Bootstrap ajs link link---> 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
