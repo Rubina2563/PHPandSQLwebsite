@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +12,19 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!---style.css-->
      <link rel="stylesheet" href="../style.css">
+     
+     <?php
+include('./Includes/connect.php');
 
+@session_start();
+?>
      <style>
    .image_property{
     width:500px;
     height:500px;
    }
    body{
-    overflow-y:hidden;
+    overflow-x:hidden;
    }
    
    </style>
@@ -51,15 +57,43 @@
                 
 
                 <div>
-                    <input type="submit" value="Login" class="btn bg-primary text-light px-3 py-2" name="admin_registeration">
+                    <input type="submit" value="Login" class="btn bg-primary text-light px-3 py-2" name="admin_login">
                     <p class="small fw-bold mt-2">Do you have already an account? <a href="admin_registration.php" class="text-primary">Register</a></p>
                 </div>
             </form>
         </div>
     </div>
-</div>
-
-
-    
+</div>   
 </body>
 </html>
+
+<!--admin login php code-->
+
+<?php
+if(isset($_POST['admin_login'])){
+$admin_username=$_POST['username'];
+$admin_password=$_POST['password'];
+
+
+$select_query="SELECT * FROM `admin_table` WHERE admin_name='$admin_username'";
+$result=mysqli_query($con,$select_query);
+$row_count=mysqli_num_rows($result);
+$row_data=mysqli_fetch_assoc($result);
+
+
+if($row_count>0){
+    $_SESSION['username']=$admin_username;
+    //$_SESSION['user_password']=$user_password;
+if(password_verify($admin_password,$row_data['admin_password'])){
+  echo "<script>alert('login successfully')</script>"; 
+  echo "<script>window.open('index.php','_self')</script>";  
+   
+}else{
+    echo "<script>alert('Invalid credentials')</script>";  
+    echo "<script>window.open('admin_logout.php','_self')</script>";   
+}
+
+
+}
+}
+?>

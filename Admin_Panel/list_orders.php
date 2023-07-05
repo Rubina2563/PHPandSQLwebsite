@@ -1,3 +1,12 @@
+<?php
+@session_start();
+include('./Includes/connect.php');
+
+//Select repeated vslues if any already present in database
+if(!isset($_SESSION['username'])){
+    include('admin_login.php');
+   }
+?>
 <h3 class="text-center text-success">All Orders</h3>
 
 <table class="table table-bordered mt-5 text-center table-secondary">
@@ -18,7 +27,7 @@ if($num_row==0){
 <th>Total Product</th>
 <th>Ordered Date</th>
 <th>Status</th>
-<th>Delete</th>
+
 </tr>
 </thead>
 <tbody>";
@@ -40,8 +49,7 @@ if($num_row==0){
         <td>$total_products</td>
         <td>$order_date</td>
         <td>$order_status</td>
-        <td><a href='' class='text-center'><i class='fa fa-trash' aria-hidden='true'></i></a></td>
-    </tr>";
+       ";
     }
 }
 ?>

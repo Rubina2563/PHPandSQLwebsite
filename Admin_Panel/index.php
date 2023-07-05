@@ -1,7 +1,9 @@
 <?php 
 include('./Includes/connect.php');
 include('../Functions/commonfunctions.php');
+session_start();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,19 +50,11 @@ include('../Functions/commonfunctions.php');
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
         <div class="container-fluid ">
         <img src="../Images/image2.png" alt="logo" class="logo"></img>
-       
-        <nav class="navbar navbar-expand-lg ">
-            <ul class="navbar-nav ">
-                <li class="nav-item">
-                    <a href="" class="nav-link">Welcome guest</a>
-                </li>
-            </ul>
+</div>
+        
         </nav>
 
-        </div>
-
-     
-</nav>
+        
   </div>
 
  <!--second child -->
@@ -74,8 +68,21 @@ include('../Functions/commonfunctions.php');
  <div class="row ">
     <div class="col-12 text-primary-emphasis bg-primary-subtle p-1 d-flex align-items-center">
         <div>
-        <a href="#"><img src="../Images/laptop.png" alt="" class="imageAdmin m-2"></img></a>
-        <p class="text-center">Admin panel</p></div>
+        
+        
+          
+        <?php if(!isset($_SESSION['username'])){
+  echo " <p class='text-center'><b>Welcome guests</b></a>
+   </p>";
+  }else{
+   echo "<li class='nav-item '>
+   <p class='text-center'><b>Welcome ".$_SESSION['username']."</b></a>
+ </p>";
+  }
+
+       ?>
+</div>
+      
 
         <div class="button text-center">
             <button class="m-2 rounded"><a href="..\inert_product.php" class="nav-link text-light bg-success p-3">Insert Products</a></button>
@@ -87,8 +94,19 @@ include('../Functions/commonfunctions.php');
             <button class="m-2 rounded"><a href="index.php?list_orders" class="nav-link text-light bg-success p-3">All Orders</a></button>
             <button class="m-2 rounded"><a href="index.php?list_payments" class="nav-link text-light bg-success p-3">All Payments</a></button>
             <button class="m-2 rounded"><a href="index.php?list_users" class="nav-link text-light bg-success p-3">List User</a></button>
-            <button class="m-2 rounded"><a href="" class="nav-link text-light bg-success p-3 ">Log out</a></button>
+           
+            <?php
             
+       if(!isset($_SESSION['username'])){
+        echo " <button class='m-2 rounded'>
+           <a class='nav-link text-light bg-success p-3' href='.\admin_login.php'><b>Login</b></a>
+         </button>";
+        }else{
+         echo " <button class='m-2 rounded'>
+           <a class='nav-link text-light bg-success p-3' href='.\admin_logout.php'><b>Logout</b></a>
+         </button>";
+        }
+            ?>
             
         </div>
     </div>
@@ -179,12 +197,21 @@ include('../Functions/commonfunctions.php');
     include('list_users.php');
   }
   ?>
+
+
+
+
+
 <!---last child--->
 
 
 <?php
 include("../Functions/footer.php");
 ?>
+
+
+
+
 
   <!----Bootstrap ajs link link---> 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

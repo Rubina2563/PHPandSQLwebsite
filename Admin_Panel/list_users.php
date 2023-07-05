@@ -1,3 +1,12 @@
+<?php
+@session_start();
+include('./Includes/connect.php');
+
+//Select repeated vslues if any already present in database
+if(!isset($_SESSION['username'])){
+    include('admin_login.php');
+   }
+?>
 <h3 class="text-center text-success">All Users</h3>
 
 <table class="table table-bordered mt-5 text-center table-secondary">
@@ -18,7 +27,7 @@ if($num_row==0){
 <th>User Image</th>
 <th>User Address</th>
 <th>User Mobile</th>
-<th>Delete</th>
+
 </tr>
 </thead>
 <tbody>";
@@ -41,8 +50,7 @@ if($num_row==0){
         <td><img src='../Images/$user_image' alt='$username' class='product_image'></td>
         <td>$user_address</td>
         <td> $user_mobile</td>
-        <td><a href='' class='text-center'><i class='fa fa-trash' aria-hidden='true'></i></a></td>
-    </tr>";
+       ";
     }
 }
 ?>

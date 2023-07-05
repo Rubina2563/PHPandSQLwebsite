@@ -27,6 +27,14 @@ if(isset($_POST['confirm_payment'])){
 
     $update_query="UPDATE `user_orders` SET `order_status`='Complete' WHERE `order_id`=$order_id";
     $result_update=mysqli_query($con,$update_query);
+    
+    $select_invoice_query="SELECT * FROM `user_orders` WHERE `order_status`='Complete'";
+    $result_invoice=mysqli_query($con,$select_invoice_query);
+    $fetch_query=mysqli_fetch_assoc($result_invoice);
+    $invoice_num=$fetch_query['invoice_number'];
+
+    $delete_pending="DELETE FROM `order_pending` WHERE `invoice_number`=$invoice_num";
+    $result_delete=mysqli_query($con,$delete_pending);
 
 }
 ?>

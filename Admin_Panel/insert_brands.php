@@ -4,7 +4,13 @@ include('./Includes/connect.php');
 
 //Select repeated vslues if any already present in database
 
+@session_start();
 
+
+//Select repeated vslues if any already present in database
+if(!isset($_SESSION['username'])){
+    include('admin_login.php');
+   }
 
 if(isset($_POST['insert_brand'])){
 

@@ -1,3 +1,6 @@
+<?php
+include('.\Includes\connect.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,15 +60,56 @@
                 </div>
 
                 <div>
-                    <input type="submit" value="Register" class="btn bg-primary text-light px-3 py-2" name="admin_registeration">
-                    <p class="small fw-bold mt-2">Don't you have an account? <a href="admin_login.php" class="text-danger">Login</a></p>
+                    <input type="submit"  name="admin" value="Register" class="btn bg-primary text-light px-3 py-2" >
+                    <p class="small fw-bold mt-2">Do you have an account? <a href="admin_login.php" class="text-danger">Login</a></p>
                 </div>
+               
             </form>
+
+            <?php
+
+    if(isset($_POST['admin'])){
+        $admin_username=$_POST['username'];
+        $admin_mail=$_POST['Email'];
+        $admin_password=$_POST['password'];
+        $hashed_password=password_hash($admin_password,PASSWORD_DEFAULT);
+        $admin_conf_password=$_POST['confirm_password'];
+        
+        echo "<script>alert{'first OK')</script>";
+        //$user_ip=getIPAddress();
+
+        //select query
+        $select_admin="SELECT * FROM `admin_table` WHERE `admin_name`='$admin_username' AND `admin_email`='$admin_mail'";
+        $selected_query=mysqli_query($con,$select_admin);
+        $admin_num=mysqli_num_rows($selected_query);
+
+        echo "<script>alert{'second OK')</script>";
+
+        if( $admin_num>0){
+            echo "<script>alert('Username and email already exist')</script>";
+        }elseif($admin_password!=$admin_conf_password){
+            echo "<script>alert('Password doesnot match with confirm password')</script>";
+        }
+        else{
+        $insert_query="INSERT INTO `admin_table`(`admin_name`, `admin_email`, `admin_password`) VALUES ('$admin_username','$admin_mail','$hashed_password')";
+        $sql_execute=mysqli_query($con,$insert_query);
+        if($sql_execute){
+            echo "<script>alert('Data inserted successfully')</script>";
+        }else{
+            die(mysqli_error($con));
+        }
+    }
+
+       
+    }
+?>
         </div>
     </div>
 </div>
 
-
-    
+<!--admin registeration php code --> 
 </body>
 </html>
+
+
+    
