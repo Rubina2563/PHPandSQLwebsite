@@ -5,14 +5,14 @@ include('./Includes/connect.php');
 //Select repeated vslues if any already present in database
 if(!isset($_SESSION['username'])){
     include('admin_login.php');
-   }
-?>
-<h3 class="text-center text-success">All Orders</h3>
+   }else{
+    echo "
+    <h3 class='text-center text-success'>All Orders</h3>
 
-<table class="table table-bordered mt-5 text-center table-secondary">
-    <thead class="table-info text-center">
-    <?php
-$get_orders="SELECT * FROM `user_orders`";
+<table class='table table-bordered mt-5 text-center table-secondary'>
+    <thead class='table-info text-center'>";
+
+    $get_orders="SELECT * FROM `user_orders`";
 $orders_result=mysqli_query($con,$get_orders);
 $num_row=mysqli_num_rows($orders_result);
 
@@ -52,9 +52,8 @@ if($num_row==0){
        ";
     }
 }
-?>
-       
-            
-        </tbody>
+echo "</tbody>
 
-</table>
+</table>";
+   }?>
+
