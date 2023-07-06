@@ -152,7 +152,7 @@ if(!isset($_SESSION['username'])){
                     <td><?php echo $product_title ?></td>
                     <td><img class="cart_image" src="./Images/<?php echo $product_image1?>" alt=""></td>
                    <td><form action="" method="POST"><input type="number" id="quantity" name="quantity" min="1" max="100" step="1" class="form-input w-50"></form></td>
-                 
+                  
                  <?php
                   $get_ip=getIPAddress();
                   if(isset($_POST['update_cart'])){
