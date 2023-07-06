@@ -19,6 +19,7 @@ include('../Functions/commonfunctions.php');
 
 <?php
 $user_ip=getIPAddress();
+
 $user_query="SELECT * FROM `user_table` WHERE user_ip='$user_ip'";
 $user_result=mysqli_query($con,$user_query);
 $data_fetch=mysqli_fetch_array($user_result);

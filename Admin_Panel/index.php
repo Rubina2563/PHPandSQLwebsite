@@ -70,7 +70,7 @@ session_start();
         <div>
         
         
-          
+         
         <?php if(!isset($_SESSION['adminname'])){
   echo " <p class='text-center'><b>Welcome guests</b></a>
    </p>";
@@ -85,6 +85,7 @@ session_start();
       
 
         <div class="button text-center">
+        <button class="m-2 rounded"><a href="..\index.php" class="nav-link text-light bg-warning p-3">Home</a></button>
             <button class="m-2 rounded"><a href=".\inert_product.php" class="nav-link text-light bg-success p-3">Insert Products</a></button>
             <button class="m-2 rounded"><a href="index.php?view_products" class="nav-link text-light bg-success p-3">View Products</a></button>
             <button class="m-2 rounded"><a href="index.php?insert_category" class="nav-link text-light bg-success p-3">Insert Categories</a></button>

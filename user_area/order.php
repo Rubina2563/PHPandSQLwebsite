@@ -46,7 +46,7 @@ $order_details="INSERT INTO `user_orders`(`user_id`, `amount_due`, `invoice_numb
 $order_result=mysqli_query($con,$order_details);
 
 if($order_result){
-    echo "<script>alert('Order executed succefully')</script>";
+    echo "<script>alert('Order executed successfully')</script>";
     echo "<script>window.open('profile.php','_self')</script>";
 }
 

@@ -1,6 +1,7 @@
 <?php 
 include('Admin_Panel\Includes\connect.php');
 include('Functions\commonfunctions.php');
+session_start();
 ?>
 
 
@@ -41,9 +42,7 @@ include('Functions\commonfunctions.php');
         <li class="nav-item">
           <a class="nav-link" href=".\user_area\user_registration.php">Register</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
+        
         <li class="nav-item">
           <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i><sup><?php cart_item_num();?></sup></a>
         </li>

@@ -33,8 +33,8 @@ echo " <div class='col-md-4 '>
       <h5 class='card-title'> $product_title</h5>
        <p class='card-text'> $product_description</p>
        <p class='card-text'>  $product_price/-</p>
-        <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add cart</a>
-       <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View cart</a>
+        <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add to cart</a>
+       <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
     </div>
 </div>
 </div> ";
@@ -77,8 +77,8 @@ function AllProducts(){
           <h5 class='card-title'> $product_title</h5>
            <p class='card-text'> $product_description</p>
            <p class='card-text'> Price: $product_price/-</p>
-           <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add cart</a>
-            <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View cart</a>
+           <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add to cart</a>
+            <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
         </div>
     </div>
     </div> ";
@@ -129,8 +129,8 @@ function getUniqueCategory(){
           <h5 class='card-title'> $product_title</h5>
            <p class='card-text'> $product_description</p>
            <p class='card-text'> Price: $product_price/-</p>
-           <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add cart</a>
-            <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View cart</a>
+           <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add to cart</a>
+            <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
         </div>
     </div>
     </div> ";
@@ -180,8 +180,8 @@ function getUniqueBrands(){
           <h5 class='card-title'> $product_title</h5>
            <p class='card-text'> $product_description</p>
            <p class='card-text'> Price: $product_price/-</p>
-           <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add cart</a>
-            <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View cart</a>
+           <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add to cart</a>
+            <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
         </div>
     </div>
     </div> ";
@@ -265,8 +265,8 @@ if(isset($_GET['search_data_product'])){
           <h5 class='card-title'> $product_title</h5>
            <p class='card-text'> $product_description</p>
            <p class='card-text'> Price: $product_price/-</p>
-           <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add cart</a>
-            <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View cart</a>
+           <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add to cart</a>
+            <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
         </div>
     </div>
     </div> ";
@@ -313,7 +313,7 @@ echo " <div class='col-md-4 '>
       <h5 class='card-title'> $product_title</h5>
        <p class='card-text'> $product_description</p>
        <p class='card-text'> Price: $product_price/-</p>
-       <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add cart</a>
+       <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add to cart</a>
        <a href='index.php' class='btn btn-secondary'>Go Home</a>
     </div>
 </div>
@@ -476,7 +476,9 @@ echo $num_of_items;
                             <p class='text-center'><a href='profile.php?my_orders' class='text-dark'>Order details</a></p>";
                         }else{
                             echo "<h3 class='text-center text-danger mt-5 mb-2'>You have zero orders pending. </h3>
-                            <p class='text-center'><a href='../index.php' class='text-dark'>Explore products</a></p>";  
+                            <p class='text-center'><a href='../index.php' class='text-dark'>Explore products</a></p>";
+                            echo  $user_id;
+                            echo $num_of_rows;
                         }
 
                     }  

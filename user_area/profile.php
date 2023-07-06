@@ -35,7 +35,7 @@ session_start();
 <!-- copiednavbar-brand from bootstrap-->
 <nav class="navbar navbar-expand-lg  bg-primary">
   <div class="container-fluid">
-  <img src="./Images/image2.png" alt="logo" class="logo"></img>
+  <img src="../Images/image2.png" alt="logo" class="logo"></img>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -53,9 +53,7 @@ cart();
         <li class="nav-item">
           <a class="nav-link" href="profile.php">My Account</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
+       
         <li class="nav-item">
           <a class="nav-link" href="..\cart.php"><i class="fa-solid fa-cart-shopping"></i><sup><?php cart_item_num();?></sup></a>
         </li>

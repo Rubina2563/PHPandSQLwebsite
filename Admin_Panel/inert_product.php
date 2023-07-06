@@ -57,9 +57,9 @@ if(isset($_POST['Insert_product'])){
         //insert images in file name product_images 
         
         
-        move_uploaded_file($tmp_image3,"./Images/$product_image3");
-        move_uploaded_file($tmp_image2,"./Images/$product_image2");
-        move_uploaded_file($tmp_image1,"./Images/$product_image1");
+        move_uploaded_file($tmp_image3,"../Images/$product_image3");
+        move_uploaded_file($tmp_image2,"../Images/$product_image2");
+        move_uploaded_file($tmp_image1,"../Images/$product_image1");
 
         //inserting all data into table products
         $insert_products= "INSERT INTO `products`( `Product_title`, `Product_description`, `Product_keyword`, `Categories_id`, `Brands_id`, `Product_image1`, `Product_image2`, `Product_image3`, `Product_price`, `Insert_date`, `Product_status`) 
