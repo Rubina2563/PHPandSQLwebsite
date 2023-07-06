@@ -44,7 +44,7 @@ include('./Includes/connect.php');
             <form action="" method="POST">
                 <div class="form-outline mb-4">
                     <label for="username" class="form-label"><b>Username</b></label>
-                    <input type="text" id="username" name="username" placeholder="Enter your name here" required="required" class="form-control w-70">
+                    <input type="text" id="username" name="username" placeholder="Enter your name here" required="required" class="form-control w-70" autocomplete="off">
                 </div>
 
                 
@@ -82,7 +82,7 @@ $row_data=mysqli_fetch_assoc($result);
 
 
 if($row_count>0){
-    $_SESSION['username']=$admin_username;
+    $_SESSION['adminname']=$admin_username;
     //$_SESSION['user_password']=$user_password;
 if(password_verify($admin_password,$row_data['admin_password'])){
   echo "<script>alert('login successfully')</script>"; 

@@ -71,12 +71,12 @@ session_start();
         
         
           
-        <?php if(!isset($_SESSION['username'])){
+        <?php if(!isset($_SESSION['adminname'])){
   echo " <p class='text-center'><b>Welcome guests</b></a>
    </p>";
   }else{
    echo "<li class='nav-item '>
-   <p class='text-center'><b>Welcome ".$_SESSION['username']."</b></a>
+   <p class='text-center'><b>Welcome ".$_SESSION['adminname']."</b></a>
  </p>";
   }
 
@@ -97,7 +97,7 @@ session_start();
            
             <?php
             
-       if(!isset($_SESSION['username'])){
+       if(!isset($_SESSION['adminname'])){
         echo " <button class='m-2 rounded'>
            <a class='nav-link text-light bg-success p-3' href='.\admin_login.php'><b>Login</b></a>
          </button>";

@@ -20,7 +20,7 @@ include('./Includes/connect.php');
 
 
 //Select repeated vslues if any already present in database
-if(!isset($_SESSION['username'])){
+if(!isset($_SESSION['adminname'])){
     include('./admin_login.php');
    }else{
     
